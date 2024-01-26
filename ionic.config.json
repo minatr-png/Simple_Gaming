@@ -1,0 +1,7 @@
+{
+  "name": "simple-gaming",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
