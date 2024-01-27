@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@GameCard": ["./src/components/GameCard/GameCard"]
+    }
   },
   "include": ["vite.config.ts"]
 }

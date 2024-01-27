@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+ion-list {
+    background-color: #253237;
+}
+
+ion-modal {
+    --border-radius: 45px;
+}

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonModal, IonButton } from '@ionic/react';
-import GameCard from '../../components/GameCard/GameCard';
-import './Tab1.css';
+import { IonContent, IonPage, IonList, IonModal, IonButton, IonReorderGroup, IonReorder, ItemReorderEventDetail } from '@ionic/react';
+import GameCard from '@GameCard';
+import './CurrentlyPlaying.css';
 
 interface Game {
   title: string;
@@ -13,12 +13,12 @@ interface Games {
   [key: number]: Game;
 }
 
-const Tab1: React.FC = () => {
+const CurrentlyPlaying: React.FC = () => {
   const [selectedGame, setSelectedGame] = useState<number>(-1)
   const modal = useRef<HTMLIonModalElement>(null);
   const page = useRef(undefined);
 
-  const games:Games = {
+  const games: Games = {
     1: {
       title: "Pokémon Yellow",
       status: "Playing",
@@ -60,18 +60,39 @@ const Tab1: React.FC = () => {
     }
   };
 
+  const handleReorder =(event: CustomEvent<ItemReorderEventDetail>) => {
+    // The `from` and `to` properties contain the index of the item
+    // when the drag started and ended, respectively
+    console.log('Dragged from index', event.detail.from, 'to', event.detail.to);
+
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    event.detail.complete();
+  }
+
   return (
     <IonPage ref={page}>
       <IonContent fullscreen>
-        <IonToolbar>
-          <IonTitle>Currently Playing</IonTitle>
-        </IonToolbar>
+        <h1>Currently Playing</h1>
         <IonList>
-          <GameCard id={1} onClick={() => openModal(1)}/>
-          <GameCard id={2} onClick={() => openModal(2)}/>
-          <GameCard id={3} onClick={() => openModal(3)}/>
-          <GameCard id={4} onClick={() => openModal(4)}/>
-          <GameCard id={5} onClick={() => openModal(5)}/>
+          <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
+            <IonReorder>
+              <GameCard id={1} onClick={() => openModal(1)} />
+            </IonReorder>
+            <IonReorder>
+              <GameCard id={2} onClick={() => openModal(2)} />
+            </IonReorder>
+            <IonReorder>
+              <GameCard id={3} onClick={() => openModal(3)} />
+            </IonReorder>
+            <IonReorder>
+              <GameCard id={4} onClick={() => openModal(4)} />
+            </IonReorder>
+            <IonReorder>
+              <GameCard id={5} onClick={() => openModal(5)} />
+            </IonReorder>
+          </IonReorderGroup>
         </IonList>
 
         <IonModal ref={modal} initialBreakpoint={0.5} breakpoints={[0, 0.5]}>
@@ -79,7 +100,7 @@ const Tab1: React.FC = () => {
             <div>{games[selectedGame]?.title}</div>
             <div>{games[selectedGame]?.status}</div>
             <div>{games[selectedGame]?.descrip}</div>
-            
+
             <IonButton onClick={closeModal}>Close Modal</IonButton>
           </IonContent>
         </IonModal>
@@ -88,4 +109,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default CurrentlyPlaying;

@@ -55,25 +55,22 @@ const GameCard: React.FC<GameCardProps> = ({ id, onClick }) => {
     return (
         <IonItemSliding>
             <IonItemOptions side="start">
-                <IonItemOption color="success">Archive</IonItemOption>
+                <IonItemOption className="GiveUp" color="success">Archive</IonItemOption>
             </IonItemOptions>
 
-            <IonItem onClick={onClick}>
-                <IonCard>
-                    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-                    <IonCardHeader>
-                        <IonCardTitle>{games[id].title}</IonCardTitle>
-                        <IonCardSubtitle>{games[id].status}</IonCardSubtitle>
-                    </IonCardHeader>
-
-                    <IonCardContent>
-                        {games[id].descrip}
-                    </IonCardContent>
-                </IonCard>
+            <IonItem onClick={onClick} lines="none">
+                <div>
+                    <img alt="Silhouette of mountains" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets-prd.ignimgs.com%2F2022%2F09%2F14%2Fzelda-tears-of-the-kingdom-button-2k-1663127818777.jpg&f=1&nofb=1&ipt=80d69d5156f92ca51b09d7184d456cf6f40e593a7c290af4f0a7a6838c5c4e92&ipo=images" />
+                    <div>
+                        <div className="title">{games[id].title}</div>
+                        <div className="descrip">{games[id].descrip}</div>
+                        <div className="cardFooter">{games[id].status}</div>
+                    </div>
+                </div>
             </IonItem>
 
             <IonItemOptions side="end">
-                <IonItemOption color="danger">Delete</IonItemOption>
+                <IonItemOption className="Complete" color="danger">Delete</IonItemOption>
             </IonItemOptions>
         </IonItemSliding>
     );

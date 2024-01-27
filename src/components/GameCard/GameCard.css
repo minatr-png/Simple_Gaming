@@ -1,0 +1,62 @@
+ion-item-option {
+    border-radius: 20px;
+}
+
+ion-item-option.GiveUp{
+    margin: 20px 0 0 16px;
+}
+
+ion-item-option.Complete{
+    margin: 20px 16px 0 0;
+}
+
+ion-item-sliding ion-item {
+    --background: transparent;
+    margin-top: 20px;
+}
+
+ion-item-sliding ion-item img {
+    width: 33%;
+    object-fit: cover;
+    margin-right: 5px;
+
+    border-radius: 20px 0 0 20px;
+}
+
+ion-item-sliding ion-item > div {
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    width: 100%;
+
+    background-color: #F87666;
+    border-radius: 20px;
+}
+
+ion-item-sliding ion-item > div > div {
+    display: flex;
+    flex-direction: column;
+    font-family: auto;
+}
+
+ion-item-sliding ion-item div.title {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ion-item-sliding ion-item div.descrip {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    font-size: 14px;
+}
